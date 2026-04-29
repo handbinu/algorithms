@@ -5,17 +5,14 @@ class Solution {
         for(String name: participant){
             map.put(name, map.getOrDefault(name, 0) + 1);
         }
-        
         for(String name: completion){
             map.put(name, map.getOrDefault(name, 0) - 1);
         }
-        String answer = "";
-        for(String key : map.keySet()){
-            if(map.get(key) == 1){
-                answer = key;
-                break;
+        for(Map.Entry<String, Integer> entry: map.entrySet()){
+            if(entry.getValue() != 0){
+                return entry.getKey();
             }
         }
-        return answer;
+        return "";
     }
 }
